@@ -16,7 +16,10 @@ def changeToJPEG(imageSet=sys.argv[1:]):
             try:
                 img = Image.open(inFile)
             except FileNotFoundError as e:
-                print('无法打开文件{}'.format(inFile))
+                print('找不到 文件 {}'.format(inFile))
+                continue
+            except:
+                print('异常问题 文件 {}'.format(inFile))
                 continue
 
             # png图片有四个通道RGBA, 而JPEG只有三个通道，所以如果是四通道，则只取前三个通道
@@ -30,6 +33,8 @@ def changeToJPEG(imageSet=sys.argv[1:]):
             except IOError as e:
                 print("Can't convert {} //".format(inFile), e)
                 os.system('del {}'.format(outFile)) # 删除转化错误的文件
+        else:
+            print('该文件为JPEG格式文件')
 
 if __name__ == '__main__':
     changeToJPEG()

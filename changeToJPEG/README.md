@@ -7,6 +7,7 @@
 2. 然后就可以如下操作:
 
 **changeToJPEG.py**
+
 *介绍: changeToJPEG.py通过命令行参数一次转化一张或多张图片为JPEG格式*
 
 - 命令行输入
@@ -15,11 +16,21 @@ changeToJPEG.py 图片名1.png [图片名2.png ...]
 ```
 
 **change.py**
+
 *介绍: change.py 通过命令行将当前目录下所有图片转化为JPEG格式，并保存在JPEG文件夹中*
 
 - 命令行输入
 ```
 change.py
+```
+
+**thumbnail.py**
+
+*介绍: thumbnail.py 通过命令行参数一次生成一张或多张图片的缩略图*
+
+- 命令行输入
+```
+thumbnail.py 图片名1.png [图片名2.png ...]
 ```
 
 ### BTW
