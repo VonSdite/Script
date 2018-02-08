@@ -17,10 +17,8 @@ def change(inFile=sys.argv[1], pformat=sys.argv[2]):
             img = Image.open(inFile)
         except FileNotFoundError as e:
             print('找不到 文件 {}'.format(inFile))
-            continue
         except:
             print('异常问题 文件 {}'.format(inFile))
-            continue
 
         # png图片有四个通道RGBA, 而JPEG只有三个通道，所以如果是四通道，则只取前三个通道
         if len(img.split()) == 4:
