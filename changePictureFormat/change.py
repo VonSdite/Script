@@ -5,25 +5,14 @@
 import os, sys
 from PIL import Image
 
-def change():    
-    PIC_FORMAT = ['.png', '.gif', '.bmp']   # 要转化为JPEG格式的图片格式
+def change(inFile=sys.argv[1], pformat=sys.argv[2]):
+    # 可直接通过sys.argv传入图片来操作
+    f, e = os.path.splitext(inFile)
 
-    # 当前目录下创建保存结果JPEG的文件夹
-    JPEG = 'JPEG/'
-    if not os.path.isdir(JPEG):
-        os.mkdir(JPEG)
+    outFile = f + '.' + pformat
 
-    # 修改当前路径下所有图片为JPEG
-    imageSet = os.listdir('.')
-    for inFile in imageSet:
-        f, e = os.path.splitext(inFile)
-
-        # 判断是否是图片
-        if e not in PIC_FORMAT:
-            continue        # 不是则continue 
-
-        outFile = JPEG + f + '.jpg'
-
+    # 判断文件是否已经是目标格式了，这里做的是简单的判断
+    if inFile != outFile:
         try:
             img = Image.open(inFile)
         except FileNotFoundError as e:
@@ -44,6 +33,8 @@ def change():
         except IOError as e:
             print("Can't convert {} //".format(inFile), e)
             os.system('del {}'.format(outFile)) # 删除转化错误的文件
+    else:
+        print('该文件为.{}格式文件'.format(pformat))
 
 if __name__ == '__main__':
     change()
